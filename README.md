@@ -1,9 +1,9 @@
-# FantasyWordGenerator
-This is a JS library that allows you to generate fictional words inspired by a language of your choice!   
-It uses Wikipedia extracts and N-grams to generate words that sound like they belong to the language you selected.
+# Fantasy Word Generator
+Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by a language of your choice**!   
+It uses **Wikipedia extracts** and **N-grams** to generate words that sound like they belong to the language you selected.
 
 # LINKING
-Simply add this to your External Resources:
+Simply add the **CDN link** below to a `<script>` tag in your HTML:
 https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js
 
 # USAGE
