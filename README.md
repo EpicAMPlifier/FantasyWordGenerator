@@ -1,6 +1,6 @@
 # Fantasy Word Generator
 Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by a language of your choice**!   
-It uses **Wikipedia extracts** and **N-grams** to generate words that sound like they belong to the language you selected.
+It uses **Wikipedia extracts** and an **N-gram** to generate words that sound like they belong to the language you selected.
 
 # LINKING
 Simply add the **CDN link** below to a `<script>` tag in your HTML:
