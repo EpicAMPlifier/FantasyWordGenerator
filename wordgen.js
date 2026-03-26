@@ -16,10 +16,10 @@ window.WordGen = {
 
     const text = await getWikiText(articleTitle, langCode);
 
-    const lowerWords = text.toLowerCase();
-    const words = lowerWords.match(/[a-z]+/g);
-    words.slice(min, max).forEach((word) => {
-      let pieces = word.split(/([aeiouy]+)/).filter((p) => p !== '');
+    const lowerWords = text.toLocaleLowerCase(langCode === 'tr' ? 'tr-TR' : undefined);
+    const words = lowerWords.match(/[\p{L}]{2,}/gu); // UPDATED: Now allows any letters in the Unicode Standard! As of [v2.0] overhaul.
+    words.slice(min, max).forEach((word) => {  // Now with Turkish, Greek, Vietnamese and Cyrillic characters! As of [v2.0].
+      let pieces = word.split(/(?<=[aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu).filter((p) => p !== '');
       totalPieces.push(pieces);
     });
 
@@ -94,7 +94,9 @@ window.WordGen = {
           genLength < genLimit
         ) {
           genLetter =
-            alphabetList[currentChunk][Math.floor(Math.random() * alphabetList[currentChunk].length)];
+            alphabetList[currentChunk][
+              Math.floor(Math.random() * alphabetList[currentChunk].length)
+            ];
 
           if (
             genLetter !== 'ESC' &&
@@ -106,11 +108,8 @@ window.WordGen = {
           genLength++;
         }
 
-        // Vowel Guard
-        if (
-          /[aeiouy]+/.test(generatedWord) &&
-          generatedWord.length <= genLimit
-        ) {
+        // Vowel Guard (Now with Turkish, Greek, Vietnamese and Cyrillic characters! As of [v2.0].)
+        if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit) {
           return (
             generatedWord ||
             'Error: Config "WordGen.letterLimit" might be too small.'
