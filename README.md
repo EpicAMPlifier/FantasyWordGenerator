@@ -10,9 +10,9 @@ https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js
 ```javascript
 async function createResult(title,lang){
   // CONFIG:
-  WordGen.letterLimit = 10; // THIS CONTROLS HOW MANY CHARACTERS THE GENERATED WORD CONTAINS.
+  WordGen.letterLimit = 10; // CONTROLS THE MAXIMUM AMOUNT OF CHARACTERS THE WORD(S) CAN CONTAIN.
   WordGen.sliceMin = 0;
-  WordGen.sliceMax = 500; // ADJUST THIS TO INCREASE THE SIZE OF THE N-GRAM.
+  WordGen.sliceMax = 500; // ADJUST TO INCREASE OR DECREASE THE SIZE OF THE N-GRAM. INCREASING USUALLY LEADS TO MORE REALISTIC WORDS.
   
   const result = await WordGen.create(title,lang);
   console.log(result());
@@ -20,7 +20,23 @@ async function createResult(title,lang){
 createResult("Hotel", "en");
 
 // "HOTEL" IS THE NAME OF THE WIKIPEDIA ARTICLE. CHANGE TO MATCH YOUR WORD THEME.
-// ABSTRACT TITLES COULD CREATE MORE MYSTICAL WORDS. Try out "Volcano", or "Fairy".
+/* ABSTRACT TITLES COULD CREATE DIFFERENT THEMED WORDS.
+E.g. science-related titles will lead to more science.
+Try out "Volcano", or "Fairy". 
+*/
 
-// "EN" IS THE LANGUAGE CODE. EN is English, ES is Spanish, DE is German, et cetera. Based on ISO 639-1.
+/* "EN" IS THE LANGUAGE CODE. Based on ISO 639-1, with some exceptions.
+Examples:
+> EN: English
+> ES: Spanish
+> FR: French
+> DE: German
+> NL: Dutch
+> IS: Icelandic
+> PL: Polish
+> TR: Turkish
+> VI: Vietnamese
+> UK: Ukrainian
+> RU: Russian
+*/
 ```
