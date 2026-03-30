@@ -112,7 +112,7 @@ window.WordGen = {
         }
 
         // Vowel Guard
-        if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit && (!isRealGuardActive || !words.includes(generatedWord))) {
+        if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit && (!isRealGuardActive || !lowerWords.includes(generatedWord))) {
           return (
             generatedWord ||
             'Error: Config "WordGen.letterLimit" might be too small.'
