@@ -13,7 +13,8 @@ async function createResult(title,lang){
   WordGen.letterLimit = 10; // CONTROLS THE MAXIMUM AMOUNT OF CHARACTERS THE WORD(S) CAN CONTAIN.
   WordGen.sliceMin = 0;
   WordGen.sliceMax = 500; // ADJUST TO INCREASE OR DECREASE THE SIZE OF THE N-GRAM. INCREASING USUALLY LEADS TO MORE REALISTIC WORDS.
-  
+  WordGen.realGuard = true; // REMOVES REAL WORDS FROM THE OUTPUT. TRUE BY DEFAULT; TO KEEP REAL WORDS SET TO FALSE.
+
   const result = await WordGen.create(title,lang);
   console.log(result());
 }
