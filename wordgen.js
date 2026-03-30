@@ -1,4 +1,5 @@
 window.WordGen = {
+  realGuard: true, // Filter real words
   sliceMin: 0,
   sliceMax: 500,
   letterLimit: 10, // Word letter limit
@@ -7,7 +8,7 @@ window.WordGen = {
     let count = 0;
     const min = this.sliceMin;
     const max = this.sliceMax;
-    const genLimit = this.letterLimit;
+    const genLimit = this.letterLimit; 
 
     let genLetter = '';
     let totalPieces = [];
@@ -16,9 +17,9 @@ window.WordGen = {
 
     const text = await getWikiText(articleTitle, langCode);
 
-    const lowerWords = text.toLocaleLowerCase(langCode === 'tr' ? 'tr-TR' : undefined);
-    const words = lowerWords.match(/[\p{L}]{2,}/gu); // UPDATED: Now allows any letters in the Unicode Standard! As of [v2.0] overhaul.
-    words.slice(min, max).forEach((word) => {  // Now with Turkish, Greek, Vietnamese and Cyrillic characters! As of [v2.0].
+    const lowerWords = text.toLocaleLowerCase();
+    const words = lowerWords.match(/[\p{L}]{2,}/gu);
+    words.slice(min, max).forEach((word) => {
       let pieces = word.split(/(?<=[aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu).filter((p) => p !== '');
       totalPieces.push(pieces);
     });
@@ -57,7 +58,8 @@ window.WordGen = {
             if (
               chunk[
                 index + 1
-              ] /*&& !alphabetList[letter].includes(chunk[index+1])*/
+              ] 
+
             ) {
               alphabetList[letter].push(chunk[index + 1]);
             }
@@ -79,6 +81,7 @@ window.WordGen = {
     /* WORD CONSTRUCTOR */
     function generateWord() {
       let retries = 0;
+      const isRealGuardActive = window.WordGen.realGuard;
 
       while (retries < 50) {
         let genLength = 0;
@@ -108,8 +111,8 @@ window.WordGen = {
           genLength++;
         }
 
-        // Vowel Guard (Now with Turkish, Greek, Vietnamese and Cyrillic characters! As of [v2.0].)
-        if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit) {
+        // Vowel Guard
+        if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit && (!isRealGuardActive || !words.includes(generatedWord))) {
           return (
             generatedWord ||
             'Error: Config "WordGen.letterLimit" might be too small.'
