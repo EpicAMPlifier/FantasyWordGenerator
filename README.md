@@ -60,4 +60,4 @@ Examples:
 <br>
 <br>
 
-*This library was created as a learning project and experiment in language generation.*
+*This library was created as a learning project and as an experiment in language generation.*
