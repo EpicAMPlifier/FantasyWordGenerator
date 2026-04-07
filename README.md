@@ -1,6 +1,6 @@
 # Fantasy Word Generator
-Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by a language of your choice**!   
-It is a stochastic language model that uses live **Wikipedia extracts** as training data and **N-gram** modeling to generate liguistically consistent fictional words.
+Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by the language of your choice**!   
+It is a stochastic language model that uses live **Wikipedia extracts** as training data, combined with **N-gram** modeling, to generate linguistically consistent fictional words.
 
 # TEST IT OUT!
 You can play around with the generator at:
