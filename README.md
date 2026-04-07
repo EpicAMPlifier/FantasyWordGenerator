@@ -1,10 +1,14 @@
 # Fantasy Word Generator
 Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by a language of your choice**!   
-It uses **Wikipedia extracts** and an **N-gram** to generate words that sound like they belong to the language you selected.
+It is a stochastic language model that uses live **Wikipedia extracts** as training data and **N-gram** modeling to generate liguistically consistent fictional words.
 
 # TEST IT OUT!
 You can play around with the generator at:
 https://fantasywordforge.github.io/
+
+**Example:** <br>
+Input => ```Eldstöð``` (Icelandic for volcano), ```IS```. <br>
+Output => ```hawaitað```, ```vatnsgufur```, ```gjóskugosi```, ```dreinum```, ```hraum```, ```yfist```.
 
 # LINKING
 Simply add the **CDN link** below to a `<script>` tag in your HTML:
@@ -45,3 +49,5 @@ Examples:
 > RU: Russian
 */
 ```
+
+It returns the function ```result()```, which generates new words on each call.
