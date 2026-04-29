@@ -1,22 +1,36 @@
 # Fantasy Word Generator
-Fantasy Word Generator is a **JS library** that allows you to generate fictional words **inspired by the language of your choice**!   
-It is a stochastic language model that uses live **Wikipedia extracts** as training data, combined with **N-gram** modeling, to generate linguistically consistent fictional words.
+**Generate fantasy names, alien languages, or realistic-sounding words from any Wikipedia topic!** <br><hr>
+Fantasy Word Generator is a **JS library** that generates fictional words **inspired by any language**!   
+It is a stochastic language model that uses live **Wikipedia extracts** as training data, combined with **N-gram** modeling, to generate linguistically consistent fictional words.<br><br>
+
+# USE CASES:
+- Fantasy character and place names
+- Worldbuilding and writing
+- Game development
+- Procedural content generation
+<br>
 
 # TEST IT OUT!
-You can play around with the generator at:
-https://fantasywordforge.github.io/
+Try the generator instantly in your browser at:<br>
+https://fantasywordforge.github.io/.<br><br>
 
-**Example:** <br>
+**Examples:** <br>
+Input: ```Dragon```, ```EN```. <br>
+Output: ```levolevia```, ```atureas```, ```beneas```, ```amduas```, ```resun```, ```adrieurite```, ```tutairus```.<br><br>
 Input: ```Eldstöð``` (Icelandic for volcano), ```IS```. <br>
 Output: ```hawaitað```, ```vatnsgufur```, ```gjóskugosi```, ```dreinum```, ```hraum```, ```yfist```.
-<br>
-<br>
-# LINKING
+<br><br>
+
+<div>
+  <img src="demo.png" width="500">
+</div>
+<br><br>
+
+# LINKING:
 Simply add the **CDN link** below to a `<script>` tag in your HTML:
-https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js
-<br>
-<br>
-# USAGE
+https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js<br><br>
+
+# USAGE:
 ```javascript
 async function createResult(title,lang) {
   // CONFIG:
@@ -60,4 +74,6 @@ Examples:
 <br>
 <br>
 
-*This library was created as a learning project and as an experiment in language generation.*
+*This library was created as an experiment in language generation.*
+
+
