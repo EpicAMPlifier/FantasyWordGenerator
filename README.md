@@ -3,13 +3,6 @@
 Fantasy Word Generator is a **JS library** that generates fictional words **inspired by any language**!   
 It is a stochastic language model that uses live **Wikipedia extracts** as training data, combined with **N-gram** modeling, to generate linguistically consistent fictional words.<br><br>
 
-# USE CASES:
-- Fantasy character and place names
-- Worldbuilding and writing
-- Game development
-- Procedural content generation
-<br>
-
 # TEST IT OUT!
 Try the generator instantly in your browser at:<br>
 https://fantasywordforge.github.io/.<br><br>
@@ -25,6 +18,13 @@ Output: ```hawaitað```, ```vatnsgufur```, ```gjóskugosi```, ```dreinum```, ```
   <img src="demo.png" width="500">
 </div>
 <br><br>
+
+# USE CASES:
+- Fantasy character and place names
+- Worldbuilding and writing
+- Game development
+- Procedural content generation
+<br>
 
 # LINKING:
 Simply add the **CDN link** below to a `<script>` tag in your HTML:
