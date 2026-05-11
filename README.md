@@ -1,7 +1,7 @@
 # Fantasy Word Generator
 **Generate fantasy names, alien languages, or realistic-sounding words from any Wikipedia topic!** <br><hr>
-Fantasy Word Generator is a **JS library** that generates fictional words **inspired by any language**!   
-It is a stochastic text generator that uses live **Wikipedia extracts** as training data, combined with **N-gram** modeling, to generate linguistically consistent fictional words.<br><br>
+Fantasy Word Generator is a **JavaScript library** that generates fictional words **inspired by any language**!   
+It is a stochastic text generator that uses live **Wikipedia extracts** as a data source, combined with **N-gram** modeling, to produce linguistically consistent fictional words.<br><br>
 
 # TEST IT OUT!
 Try the generator instantly in your browser at:<br>
