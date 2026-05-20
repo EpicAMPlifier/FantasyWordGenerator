@@ -5,10 +5,10 @@ window.WordGen = {
   letterLimit: 10, // Word letter limit
 
   create: async function (articleTitle, langCode) {
-    let count = 0;
     const min = this.sliceMin;
     const max = this.sliceMax;
-    const genLimit = this.letterLimit; 
+    const genLimit = this.letterLimit;
+    const isRealGuardActive = this.realGuard;
 
     let genLetter = '';
     let totalPieces = [];
@@ -17,8 +17,10 @@ window.WordGen = {
 
     const text = await getWikiText(articleTitle, langCode);
 
+    if(text === "Error: Wikipedia article not found.") return () => text; // "No article found" error catcher
+    
     const lowerWords = text.toLocaleLowerCase();
-    const words = lowerWords.match(/[\p{L}]{2,}/gu);
+    const words = lowerWords.match(/[\p{L}]{2,}/gu) || [];
     words.slice(min, max).forEach((word) => {
       let pieces = word.split(/(?<=[aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu).filter((p) => p !== '');
       totalPieces.push(pieces);
@@ -41,9 +43,10 @@ window.WordGen = {
       const response = await fetch(`${baseURL}?${params.toString()}`);
       const data = await response.json();
 
-      const pages = data.query.pages;
-      const pageId = Object.keys(pages)[0];
-      const content = pages[pageId].extract;
+      const pages = data?.query?.pages;
+      const pageId = pages ? Object.keys(pages)[0] : null;
+      const content = (pages && pageId) ? pages[pageId].extract : null;
+      if(!content) return "Error: Wikipedia article not found.";
       return content;
     }
 
@@ -81,8 +84,7 @@ window.WordGen = {
     /* WORD CONSTRUCTOR */
     function generateWord() {
       let retries = 0;
-      const isRealGuardActive = window.WordGen.realGuard;
-
+      
       while (retries < 50) {
         let genLength = 0;
         let generatedWord = '';
@@ -115,12 +117,12 @@ window.WordGen = {
         if (/([\p{M}aeiouy\u0131öüäàâéèêëíìîïóòôúùûαεηιουωάέήίόύώаеёиоуыэюяєіїàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]+)/gu.test(generatedWord) && generatedWord.length <= genLimit && (!isRealGuardActive || !lowerWords.includes(generatedWord))) {
           return (
             generatedWord ||
-            'Error: Config "WordGen.letterLimit" might be too small.'
+            "Error: Config 'WordGen.letterLimit' might be too small."
           );
-          break;
         }
         retries++;
       }
+      return "Error: Config 'WordGen.letterLimit' might be too small.";
     }
 
     // return await train(articleTitle, langCode);
